@@ -1,8 +1,8 @@
 # .htaccess
 
-1. First, lets go through the web and view the source on the git repository.
-2. Then, we can read the README.md and see that we have to change the path. The most important thing is the "secret" path's name is changed, so the first mission now is find out the hidden name. 
-3. Now, we are able to know that we are in the direction "inc" and after we read "index.php".
+1. Tout d’abord, passons par le site et affichons la source sur le référentiel git.
+2. Ensuite, nous pouvons lire le README.md et voir que nous devons changer de chemin. La chose la plus importante est que le nom du chemin "secret" est changé, de sorte que la première mission est maintenant de trouver le nom caché. 
+3. Maintenant, nous sommes en mesure de savoir que nous sommes dans la direction "inc" et après avoir lu "index.php".
     ```
     <?php
 
@@ -27,12 +27,12 @@
 
     ?>
     ```
-    We know that we have to traval the file by the url "http://htaccess.hax.w3challs.com/index.php?page=". Now, we are able to travel and we first go through the direction "http://htaccess.hax.w3challs.com/index.php?page=../admin/.htaccess". Here is the data we get : 
+    Nous savons que nous devons traval le fichier par l’url "http://htaccess.hax.w3challs.com/index.php?page=". Maintenant, nous sommes capables de voyager et nous passons d’abord par la direction "http://htaccess.hax.w3challs.com/index.php?page=../admin/.htaccess". Voici les données que nous obtenons : 
     ```
     AuthUserFile /home/htaccess/www/UlTr4_S3cR3T_p4Th/.htpasswd AuthGroupFile /dev/null AuthName "Private area" AuthType Basic require valid-user
     ```
-    The most important thing is we get the name of the "secret" file "UlTr4_S3cR3T_p4Th". 
-4. Now, we are able to get more information by "http://htaccess.hax.w3challs.com/index.php?page=../UlTr4_S3cR3T_p4Th/.htpasswd" and here is the data we get : 
+    La chose la plus importante est que nous obtenons le nom du fichier "secret" "UlTr4_S3cR3T_p4Th". 
+4. Maintenant, nous sommes en mesure d’obtenir plus d’informations par "http://htaccess.hax.w3challs.com/index.php?page=../UlTr4_S3cR3T_p4Th/.htpasswd" et voici les données que nous obtenons : 
     ```
     admin1:$apr1$Ikl22aeJ$w1uWlBGlbatPnETT2XGx.. 
     admin2:$apr1$yJnQGpTi$WF5eCC/8lKsgBKY7fvag60 
@@ -41,7 +41,7 @@
     admin5:{SHA}CKVCPg9EZI8U9KPPakEXgfXrMIc= 
     superadmin:{SHA}pAsyOzA/MHasbNO0OKRuXSp5sRI=
     ```
-    After get the information, the first thing I do is using john the ripper to crack the code and I get : 
+    Après avoir obtenu l’information, la première chose que je fais est d’utiliser john the ripper pour déchiffrer le code et j’obtiens :
     ```
     Warning: detected hash type "md5crypt", but the string is also recognized as "md5crypt-long"
     Use the "--format=md5crypt-long" option to force loading these as that type instead
@@ -58,8 +58,8 @@
     Use the "--show" option to display all of the cracked passwords reliably
     Session completed
     ```
-    So, we know the username : admin1 and the password : orange. Now, lets login "http://htaccess.hax.w3challs.com/admin/" and get the first part of the flag.
-5. Then, we have to login superadmin to get the second part of the flag. After tones of time cracking "{SHA}pAsyOzA/MHasbNO0OKRuXSp5sRI=", I find out that it is impossible to crack it. Well ... maybe ten years but I have no time! So, I seek of another way to pass it. I read more closer to the "superadmin/.htaccess" file : 
+    Ainsi, nous connaissons le nom d’utilisateur : admin1 et le mot de passe : orange. Maintenant, connectons-nous « http://htaccess.hax.w3challs.com/admin/ » et obtenons la première partie du flag.
+5. Ensuite, nous devons nous connecter superadmin pour obtenir la deuxième partie du drapeau. Après les tons de craquement du temps "{SHA}pAsyOzA/MHasbNO0OKRuXSp5sRI=", Je découvre qu’il est impossible de le craquer. Puits... peut-être dix ans mais je n’ai pas le temps ! Donc, je cherche une autre façon de le passer. J’ai lu plus près de la "superadmin/.htaccess" fichier : 
     ```
     AuthUserFile /var/www/secret/.htpasswd_super
     AuthGroupFile /dev/null
@@ -70,5 +70,5 @@
         require valid-user
     </Limit>
     ```
-    Lets get closer look to the "Limit" part, and here some [information](https://defendtheweb.net/discussion/1159-bypassing-htaccesshtpasswd-based-authentication) I found on the web. Now, we are able to by pass it by changing the method using the url "http://htaccess.hax.w3challs.com/superadmin/index.php" and get the second part of the flag.
-6. Here is the flag : W3C{__0hMyG0d_Th3yKi7l3dk3nNy}
+    Regardons de plus près la partie "Limit", et voici quelques-uns [information](https://defendtheweb.net/discussion/1159-bypassing-htaccesshtpasswd-based-authentication) que je trouve sur le site. Maintenant, nous sommes en mesure de le passer en changeant la méthode en utilisant l’url "http://htaccess.hax.w3challs.com/superadmin/index.php" et obtenez la deuxième partie du flag.
+**6. Voici le flag :** `W3C{__0hMyG0d_Th3yKi7l3dk3nNy}`
