@@ -10,7 +10,8 @@ Host is up (0.27s latency).
 Not shown: 999 closed tcp ports (conn-refused)
 PORT   STATE SERVICE VERSION
 80/tcp open  http    Werkzeug httpd 2.0.3 (Python 3.10.2)
-|_http-title: Corridor```
+|_http-title: Corridor
+```
 
 ### Exploit IDOR
 
