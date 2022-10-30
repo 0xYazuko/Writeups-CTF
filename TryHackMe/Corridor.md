@@ -34,10 +34,6 @@ Nous pouvois voir des hash sur le code source de la site inspectons les:
         <area target="" alt="c20ad4d76fe97759aa27a0c99bff6710" title="c20ad4d76fe97759aa27a0c99bff6710" href="c20ad4d76fe97759aa27a0c99bff6710" coords="1105,628,1116,633,1113,447,1102,447" shape="poly">
         <area target="" alt="c51ce410c124a10e0db5e4b97fc2af39" title="c51ce410c124a10e0db5e4b97fc2af39" href="c51ce410c124a10e0db5e4b97fc2af39" coords="1073,609,1081,620,1082,459,1073,463" shape="poly">
     </map>
-
-
-</body>
-</html>
 ```
 
 Grâce à crackstation nous avons pu voir que la premère hash est égale à 1. 
