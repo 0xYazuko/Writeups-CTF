@@ -18,7 +18,7 @@ Nous pouvois voir des hash sur le code source de la site inspectons les:
 
 `view-source:http://10.10.245.63/`
 
-```html
+```
 
 <!DOCTYPE html>
 <html lang="en">
